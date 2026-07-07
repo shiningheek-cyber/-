@@ -3,73 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7/19 성수동 식도락 프리미엄 가이드</title>
+    <title>7/19 성수동 식도락 여행 가이드</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background-color: #f9f7f2;
-            color: #3e3e3e;
+            background-color: #fdfbf7;
+            color: #4a4a4a;
             scroll-behavior: smooth;
         }
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 350px;
+            max-width: 450px;
             margin: 0 auto;
-            height: 250px;
+            height: 300px;
         }
-        .timeline-line::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #e2e8f0;
-            z-index: 0;
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            background-color: #e9ecef;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #495057;
+            transition: all 0.2s;
         }
-        .vote-card.selected {
-            border-color: #606c38 !important;
-            background-color: #f7f9f2;
-            transform: scale(1.02);
+        .map-btn:hover {
+            background-color: #dee2e6;
+            transform: scale(1.05);
         }
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
     </style>
 </head>
-<body class="pb-24">
+<body class="pb-20">
 
-    <!-- Chosen Palette: Summer Sage & Warm Linen (여름의 청량함과 한식의 단아함을 담은 색상) -->
+    <!-- Chosen Palette: Elegant Beige & Sage Green (차분하고 세련된 느낌) -->
     <!-- Application Structure Plan: 
-        1. Hero Section: KTX 시간과 여행 테마를 강조한 환영 인사.
-        2. Travel Tips: 서울역 짐 보관 등 이동 편의를 위한 필수 정보.
-        3. Detailed Timeline: 공유된 링크의 모든 시간대별 동선을 세로형 타임라인으로 배치. 각 항목에 네이버 지도 링크 연동.
-        4. Interactive Menu Voting: 3곳의 후보지 상세 설명과 투표 시스템. 투표 시 Chart.js로 비중 시각화.
-        5. Group Sharing: 투표 결과를 복사하여 카톡방에 바로 보고할 수 있는 기능.
+        1. Hero: KTX 도착 시간을 강조한 환영 섹션.
+        2. Timeline: 이미지(image_59a2c6, 59a31c, 59a5cd) 기반의 정밀한 시간표. 각 항목에 지도 링크 포함.
+        3. Restaurant Voting: 3곳의 후보지와 투표 시스템.
+        4. Links Directory: 복잡한 성수동 골목을 대비한 주요 스팟 지도 링크 모음.
+        5. Share: 간편한 복사 도구.
     -->
     <!-- Visualization & Content Choices: 
-        - 일정 상세 -> 스텝별 타임라인 레이아웃 -> 진행 상황 및 지도 링크 제공.
-        - 식당 후보 -> 고화질 이미지 카드(Unsplash 대체) + 특징 요약 -> 빠른 의사결정 지원.
-        - 투표 현황 -> Doughnut Chart (Chart.js) -> 참여 유도 및 시각적 흥미.
-        - 결과 리포트 -> 클립보드 API -> 단톡방 공유 편의성 극대화.
+        - 일정 안내 -> 아코디언 타입 + 지도 바로가기 링크 결합 -> 직관성 확보.
+        - 식당 안내 -> 카드 UI + 캐치테이블/지도 링크 -> 실용성 강화.
+        - 투표 결과 -> Chart.js(Doughnut) -> 시각적 보상 제공.
         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
-    <!-- Header -->
-    <header class="relative bg-[#606c38] text-white pt-16 pb-20 px-6 rounded-b-[3rem] shadow-xl overflow-hidden">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 animate-pulse"></div>
-        <div class="relative z-10">
-            <span class="inline-block bg-[#fefae0] text-[#606c38] text-[10px] font-bold px-3 py-1 rounded-full mb-4">7월 19일 일요일</span>
-            <h1 class="text-3xl font-extrabold leading-tight">부산 자매님들 전용<br>성수동 나들이 안내장</h1>
-            <p class="mt-4 text-white/80 text-sm font-light">결혼식 축하부터 힙한 성수동 투어까지!</p>
+    <!-- Header Section -->
+    <header class="relative h-72 flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 bg-[#e9edc9] opacity-40"></div>
+        <div class="relative z-10 px-6">
+            <span class="text-[10px] tracking-[0.3em] text-[#606c38] font-bold uppercase mb-2 block">Premium Travel Guide</span>
+            <h1 class="text-3xl font-bold text-gray-800 leading-tight">부산 자매들의<br>성수동 식도락 나들이</h1>
+            <p class="mt-3 text-sm text-gray-500 font-medium">2026. 07. 19 (일요일)</p>
         </div>
     </header>
 
